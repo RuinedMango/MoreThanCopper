@@ -18,9 +18,9 @@ public class CreativeModeTabRegistry {
 	    "example_tab",
 	    () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.morethancopper"))
 		    .withTabsBefore(CreativeModeTabs.COMBAT)
-		    .icon(() -> ItemRegistry.EXAMPLE_ITEM.get().getDefaultInstance())
+		    .icon(() -> ItemRegistry.COPPERENDIUM.get().getDefaultInstance())
 		    .displayItems((parameters, output) -> {
-			output.accept(ItemRegistry.EXAMPLE_ITEM.get());
+			output.accept(ItemRegistry.COPPERENDIUM.get());
 		    }).build());
 
     public static void register(IEventBus eventBus) {

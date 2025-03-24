@@ -14,7 +14,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ItemRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MoreThanCopper.MODID);
 
-    public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.register("copperendium",
+    public static final DeferredItem<Item> COPPERENDIUM = ITEMS.register("copperendium",
 	    () -> new Copperendium(new Item.Properties().setId(ResourceKey.create(ITEMS.getRegistryKey(),
 		    ResourceLocation.parse(MoreThanCopper.MODID + ":copperendium")))));
 

@@ -6,6 +6,7 @@ import com.mojang.logging.LogUtils;
 import com.ruinedmango.morethancopper.registries.BlockRegistry;
 import com.ruinedmango.morethancopper.registries.CreativeModeTabRegistry;
 import com.ruinedmango.morethancopper.registries.ItemRegistry;
+import com.ruinedmango.morethancopper.registries.MenuRegistry;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -38,6 +39,7 @@ public class MoreThanCopper {
 	BlockRegistry.register(modEventBus);
 	ItemRegistry.register(modEventBus);
 	CreativeModeTabRegistry.register(modEventBus);
+	MenuRegistry.register(modEventBus);
 
 	NeoForge.EVENT_BUS.register(this);
 
