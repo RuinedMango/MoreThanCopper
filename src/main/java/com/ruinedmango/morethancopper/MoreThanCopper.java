@@ -7,6 +7,7 @@ import com.ruinedmango.morethancopper.registries.BlockRegistry;
 import com.ruinedmango.morethancopper.registries.CreativeModeTabRegistry;
 import com.ruinedmango.morethancopper.registries.ItemRegistry;
 import com.ruinedmango.morethancopper.registries.MenuRegistry;
+import com.ruinedmango.morethancopper.registries.MenuScreenRegistry;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -44,6 +45,7 @@ public class MoreThanCopper {
 	NeoForge.EVENT_BUS.register(this);
 
 	modEventBus.addListener(this::addCreative);
+	modEventBus.addListener(MenuScreenRegistry::registerScreens);
 
 	modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

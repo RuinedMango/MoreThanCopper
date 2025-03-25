@@ -2,9 +2,10 @@ package com.ruinedmango.morethancopper.items;
 
 import java.util.List;
 
+import com.ruinedmango.morethancopper.screen.copperendium.CopperendiumMenuProvider;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -30,9 +31,7 @@ public class Copperendium extends Item {
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
 	ItemStack itemstack = player.getItemInHand(hand);
-	if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
-	    serverPlayer.openMenu(new SimpleMenuProvider(null, null));
-	}
+	player.openMenu(new SimpleMenuProvider(new CopperendiumMenuProvider(), Component.literal("Copperendium")));
 	player.awardStat(Stats.ITEM_USED.get(this));
 	return InteractionResult.SUCCESS;
     }

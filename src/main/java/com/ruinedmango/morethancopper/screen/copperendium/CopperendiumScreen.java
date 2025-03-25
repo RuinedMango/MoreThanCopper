@@ -13,7 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class CopperendiumScreen extends AbstractContainerScreen<CopperendiumMenu> {
     private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(MoreThanCopper.MODID,
-	    "textures/gui/pedestal/pedestal_gui.png");
+	    "textures/gui/copperendium/copperendium_gui.png");
 
     public CopperendiumScreen(CopperendiumMenu menu, Inventory playerInventory, Component title) {
 	super(menu, playerInventory, title);
@@ -28,7 +28,8 @@ public class CopperendiumScreen extends AbstractContainerScreen<CopperendiumMenu
 	int x = (width - imageWidth) / 2;
 	int y = (height - imageHeight) / 2;
 
-	guiGraphics.blit(RenderType::guiTextured, GUI_TEXTURE, x, y, 0.0f, 0.0f, 0, 0, imageWidth, imageHeight);
+	guiGraphics.blit(RenderType::guiTextured, GUI_TEXTURE, x, y, 0.0f, 0.0f, (int) (imageWidth * 1.6),
+		(int) (imageHeight * 1.6), (int) (imageWidth * 1.6), (int) (imageHeight * 1.6));
     }
 
     @Override

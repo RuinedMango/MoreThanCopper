@@ -8,15 +8,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class CopperendiumMenu extends AbstractContainerMenu {
 
     public CopperendiumMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-	this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
+	this(containerId, inv);
     }
 
-    public CopperendiumMenu(int containerId, Inventory inv, BlockEntity blockEntity) {
+    public CopperendiumMenu(int containerId, Inventory inv) {
 	super(MenuRegistry.COPPERENDIUM_MENU.get(), containerId);
 
 	addPlayerInventory(inv);
