@@ -15,12 +15,13 @@ public class CreativeModeTabRegistry {
 	    .create(Registries.CREATIVE_MODE_TAB, MoreThanCopper.MODID);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register(
-	    "example_tab",
+	    "morethancopper_tab",
 	    () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.morethancopper"))
 		    .withTabsBefore(CreativeModeTabs.COMBAT)
 		    .icon(() -> ItemRegistry.COPPERENDIUM.get().getDefaultInstance())
 		    .displayItems((parameters, output) -> {
 			output.accept(ItemRegistry.COPPERENDIUM.get());
+			output.accept(ItemRegistry.OXIDIZED_CORE_ITEM.get());
 		    }).build());
 
     public static void register(IEventBus eventBus) {

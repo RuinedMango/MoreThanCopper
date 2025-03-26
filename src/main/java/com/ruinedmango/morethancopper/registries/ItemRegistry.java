@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -15,8 +16,11 @@ public class ItemRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MoreThanCopper.MODID);
 
     public static final DeferredItem<Item> COPPERENDIUM = ITEMS.register("copperendium",
-	    () -> new Copperendium(new Item.Properties().setId(ResourceKey.create(ITEMS.getRegistryKey(),
-		    ResourceLocation.parse(MoreThanCopper.MODID + ":copperendium")))));
+	    () -> new Copperendium(new Item.Properties().rarity(Rarity.RARE).setId(ResourceKey
+		    .create(ITEMS.getRegistryKey(), ResourceLocation.parse(MoreThanCopper.MODID + ":copperendium")))));
+
+    public static final DeferredItem<BlockItem> OXIDIZED_CORE_ITEM = ITEMS.registerSimpleBlockItem("oxidized_core",
+	    BlockRegistry.OXIDIZED_CORE);
 
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block",
 	    BlockRegistry.EXAMPLE_BLOCK);

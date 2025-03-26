@@ -51,15 +51,14 @@ public class CarvedPumpkinMixin {
 
 	    // Spawn it
 	    EnderMan strawGolem = EntityType.ENDERMAN.create(level, null);
-	    BlockPos blockPos = patternMatch.getBlock(0, 0, 0).getPos();
-	    strawGolem.moveTo((double) pos.getX() + 0.5, (double) pos.getY() + 0.05, (double) pos.getZ() + 0.5, 0.0F,
+	    strawGolem.snapTo((double) pos.getX() + 0.5, (double) pos.getY() + 0.05, (double) pos.getZ() + 0.5, 0.0F,
 		    0.0F);
 	    level.addFreshEntity(strawGolem);
 
 	    // Block update
 	    for (int l = 0; l < this.getOrCreateEndermanGolemFull().getHeight(); ++l) {
 		BlockInWorld blockinworld3 = patternMatch.getBlock(0, l, 0);
-		level.blockUpdated(blockinworld3.getPos(), Blocks.AIR);
+		level.updateNeighborsAt(blockinworld3.getPos(), Blocks.AIR);
 	    }
 	}
     }

@@ -1,6 +1,9 @@
 {
-  "itemGroup.morethancopper": "Example Mod Tab",
+  "itemGroup.morethancopper": "More Than Copper",
+  
   "block.morethancopper.example_block": "Example Block",
+  "block.morethancopper.oxidized_core": "Oxidized Core",
+  
   "item.morethancopper.copperendium": "The Copperendium",
-  "copperendium.description": "A heavy copper book"
+  "copperendium.description": "The heavy copper book."
 }
