@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.include.com.google.common.base.Predicate;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.level.Level;
@@ -50,7 +51,7 @@ public class CarvedPumpkinMixin {
 	    }
 
 	    // Spawn it
-	    EnderMan strawGolem = EntityType.ENDERMAN.create(level, null);
+	    EnderMan strawGolem = EntityType.ENDERMAN.create(level, EntitySpawnReason.TRIGGERED);
 	    strawGolem.snapTo((double) pos.getX() + 0.5, (double) pos.getY() + 0.05, (double) pos.getZ() + 0.5, 0.0F,
 		    0.0F);
 	    level.addFreshEntity(strawGolem);

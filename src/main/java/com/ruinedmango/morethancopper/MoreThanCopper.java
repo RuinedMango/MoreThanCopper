@@ -51,7 +51,6 @@ public class MoreThanCopper {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-	LOGGER.info("HELLO FROM COMMON SETUP");
 
 	if (Config.logDirtBlock)
 	    LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));

@@ -21,7 +21,6 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> OXIDIZED_CORE_ITEM = ITEMS.registerSimpleBlockItem("oxidized_core",
 	    BlockRegistry.OXIDIZED_CORE);
-
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block",
 	    BlockRegistry.EXAMPLE_BLOCK);
 
