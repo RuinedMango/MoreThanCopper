@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "morethancopper:block/oxidized_core"
+    "model": "morethancopper:block/oxidizer_core"
   }
 }

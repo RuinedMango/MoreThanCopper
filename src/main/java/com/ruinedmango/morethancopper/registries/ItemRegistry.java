@@ -19,8 +19,15 @@ public class ItemRegistry {
 	    () -> new Copperendium(new Item.Properties().rarity(Rarity.RARE).setId(ResourceKey
 		    .create(ITEMS.getRegistryKey(), ResourceLocation.parse(MoreThanCopper.MODID + ":copperendium")))));
 
-    public static final DeferredItem<BlockItem> OXIDIZED_CORE_ITEM = ITEMS.registerSimpleBlockItem("oxidized_core",
-	    BlockRegistry.OXIDIZED_CORE);
+    public static final DeferredItem<BlockItem> OXIDIZER_CORE_ITEM = ITEMS.registerSimpleBlockItem("oxidizer_core",
+	    BlockRegistry.OXIDIZER_CORE);
+    public static final DeferredItem<BlockItem> EXPOSED_OXIDIZER_CORE_ITEM = ITEMS
+	    .registerSimpleBlockItem("exposed_oxidizer_core", BlockRegistry.EXPOSED_OXIDIZER_CORE);
+    public static final DeferredItem<BlockItem> WEATHERED_OXIDIZER_CORE_ITEM = ITEMS
+	    .registerSimpleBlockItem("weathered_oxidizer_core", BlockRegistry.WEATHERED_OXIDIZER_CORE);
+    public static final DeferredItem<BlockItem> OXIDIZED_OXIDIZER_CORE_ITEM = ITEMS
+	    .registerSimpleBlockItem("oxidized_oxidizer_core", BlockRegistry.OXIDIZED_OXIDIZER_CORE);
+
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block",
 	    BlockRegistry.EXAMPLE_BLOCK);
 

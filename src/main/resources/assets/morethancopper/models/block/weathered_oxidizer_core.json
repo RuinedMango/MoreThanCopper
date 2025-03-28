@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "morethancopper:block/oxidized_core"
+    "all": "morethancopper:block/weathered_oxidizer_core"
   }
 }

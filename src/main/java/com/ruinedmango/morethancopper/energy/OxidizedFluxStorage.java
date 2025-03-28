@@ -6,6 +6,10 @@ import net.neoforged.neoforge.common.util.INBTSerializable;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
 public class OxidizedFluxStorage implements IEnergyStorage, INBTSerializable<Tag> {
+    protected int energy;
+    protected int capacity;
+    protected int maxRecieve;
+    protected int maxExtract;
 
     @Override
     public int receiveEnergy(int toReceive, boolean simulate) {
