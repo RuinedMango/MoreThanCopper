@@ -14,10 +14,10 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class OxidizerCore extends Block implements WeatheringCopper {
     public static final MapCodec<OxidizerCore> CODEC = RecordCodecBuilder
-	    .mapCodec(p_368452_ -> p_368452_
+	    .mapCodec(instance -> instance
 		    .group(WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state")
 			    .forGetter(ChangeOverTimeBlock::getAge), propertiesCodec())
-		    .apply(p_368452_, OxidizerCore::new));
+		    .apply(instance, OxidizerCore::new));
     private final WeatheringCopper.WeatherState weatherState;
 
     @Override
@@ -31,13 +31,13 @@ public class OxidizerCore extends Block implements WeatheringCopper {
     }
 
     @Override
-    protected void randomTick(BlockState p_222665_, ServerLevel p_222666_, BlockPos p_222667_, RandomSource p_222668_) {
-	this.changeOverTime(p_222665_, p_222666_, p_222667_, p_222668_);
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource randomSource) {
+	this.changeOverTime(state, level, pos, randomSource);
     }
 
     @Override
-    protected boolean isRandomlyTicking(BlockState p_154935_) {
-	return WeatheringCopper.getNext(p_154935_.getBlock()).isPresent();
+    protected boolean isRandomlyTicking(BlockState state) {
+	return WeatheringCopper.getNext(state.getBlock()).isPresent();
     }
 
     @Override
