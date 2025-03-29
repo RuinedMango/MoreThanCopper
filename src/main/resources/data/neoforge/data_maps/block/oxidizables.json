@@ -1,0 +1,14 @@
+{
+	"replace": false,
+	"values": {
+		"morethancopper:oxidizer_core": {
+			"next_oxidation_stage": "morethancopper:exposed_oxidizer_core"
+		},
+		"morethancopper:exposed_oxidizer_core": {
+			"next_oxidation_stage": "morethancopper:weathered_oxidizer_core"
+		},
+		"morethancopper:weathered_oxidizer_core": {
+			"next_oxidation_stage": "morethancopper:oxidized_oxidizer_core"
+		}
+	}
+}
