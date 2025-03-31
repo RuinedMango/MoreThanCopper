@@ -1,6 +1,8 @@
 package com.ruinedmango.morethancopper.blocks;
 
-import com.mojang.logging.LogUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
@@ -21,6 +23,8 @@ public class OxidizerCore extends Block implements WeatheringCopper {
 		    .apply(instance, OxidizerCore::new));
     private final WeatheringCopper.WeatherState weatherState;
 
+    private static final Logger LOGGER = LogManager.getLogger();
+
     @Override
     public MapCodec<OxidizerCore> codec() {
 	return CODEC;
@@ -32,14 +36,13 @@ public class OxidizerCore extends Block implements WeatheringCopper {
     }
 
     @Override
-    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource randomSource) {
-	LogUtils.getLogger().info("randoticked");
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource randomSource) {
 	this.changeOverTime(state, level, pos, randomSource);
     }
 
     @Override
     protected boolean isRandomlyTicking(BlockState state) {
-	return WeatheringCopper.getNext(state.getBlock()).isPresent();
+	return true;
     }
 
     @Override
