@@ -28,8 +28,8 @@ public class ItemRegistry {
     public static final DeferredItem<BlockItem> OXIDIZED_OXIDIZER_CORE_ITEM = ITEMS
 	    .registerSimpleBlockItem("oxidized_oxidizer_core", BlockRegistry.OXIDIZED_OXIDIZER_CORE);
 
-    public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block",
-	    BlockRegistry.EXAMPLE_BLOCK);
+    public static final DeferredItem<BlockItem> FLUX_GENERATOR_ITEM = ITEMS.registerSimpleBlockItem("flux_generator",
+	    BlockRegistry.FLUX_GENERATOR);
 
     public static void register(IEventBus eventBus) {
 	ITEMS.register(eventBus);

@@ -2,6 +2,7 @@ package com.ruinedmango.morethancopper.registries;
 
 import com.ruinedmango.morethancopper.MoreThanCopper;
 import com.ruinedmango.morethancopper.screen.copperendium.CopperendiumMenu;
+import com.ruinedmango.morethancopper.screen.fluxgenerator.FluxGeneratorMenu;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -18,6 +19,8 @@ public class MenuRegistry {
 
     public static final DeferredHolder<MenuType<?>, MenuType<CopperendiumMenu>> COPPERENDIUM_MENU = registerMenuType(
 	    "copperendium_menu", CopperendiumMenu::new);
+    public static final DeferredHolder<MenuType<?>, MenuType<FluxGeneratorMenu>> FLUX_GENERATOR_MENU = registerMenuType(
+	    "flux_generator_menu", FluxGeneratorMenu::new);
 
     private static <T extends AbstractContainerMenu> DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(
 	    String name, IContainerFactory<T> factory) {

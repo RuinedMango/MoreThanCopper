@@ -3,6 +3,7 @@ package com.ruinedmango.morethancopper;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
+import com.ruinedmango.morethancopper.registries.BlockEntityRegistry;
 import com.ruinedmango.morethancopper.registries.BlockRegistry;
 import com.ruinedmango.morethancopper.registries.CreativeModeTabRegistry;
 import com.ruinedmango.morethancopper.registries.ItemRegistry;
@@ -11,7 +12,6 @@ import com.ruinedmango.morethancopper.registries.MenuScreenRegistry;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -41,6 +41,7 @@ public class MoreThanCopper {
 	ItemRegistry.register(modEventBus);
 	CreativeModeTabRegistry.register(modEventBus);
 	MenuRegistry.register(modEventBus);
+	BlockEntityRegistry.register(modEventBus);
 
 	NeoForge.EVENT_BUS.register(this);
 
@@ -62,8 +63,8 @@ public class MoreThanCopper {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-	if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
-	    event.accept(ItemRegistry.EXAMPLE_BLOCK_ITEM);
+	// if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
+	// event.accept(ItemRegistry.EXAMPLE_BLOCK_ITEM);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

@@ -6,6 +6,7 @@
   "block.morethancopper.exposed_oxidizer_core": "Exposed Oxidizer Core",
   "block.morethancopper.weathered_oxidizer_core": "Weathered Oxidizer Core",
   "block.morethancopper.oxidized_oxidizer_core": "Oxidized Oxidizer Core",
+  "block.morethancopper.flux_generator": "Flux Generator",
   
   "item.morethancopper.copperendium": "The Copperendium",
   "copperendium.description": "The heavy copper book."

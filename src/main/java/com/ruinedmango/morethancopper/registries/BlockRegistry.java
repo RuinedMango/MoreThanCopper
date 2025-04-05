@@ -2,15 +2,14 @@ package com.ruinedmango.morethancopper.registries;
 
 import com.ruinedmango.morethancopper.MoreThanCopper;
 import com.ruinedmango.morethancopper.blocks.OxidizerCore;
+import com.ruinedmango.morethancopper.blocks.fluxfurnace.FluxGenerator;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WeatheringCopper;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -35,8 +34,11 @@ public class BlockRegistry {
 		    Properties.ofFullCopy(Blocks.OXIDIZED_COPPER).setId(ResourceKey.create(BLOCKS.getRegistryKey(),
 			    ResourceLocation.parse(MoreThanCopper.MODID + ":oxidized_oxidizer_core")))));
 
-    public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block",
-	    BlockBehaviour.Properties.of().mapColor(MapColor.STONE));
+    public static final DeferredBlock<Block> FLUX_GENERATOR = BLOCKS
+	    .register("flux_generator",
+		    () -> new FluxGenerator(
+			    Properties.ofFullCopy(Blocks.COBBLESTONE).setId(ResourceKey.create(BLOCKS.getRegistryKey(),
+				    ResourceLocation.parse(MoreThanCopper.MODID + ":flux_generator")))));
 
     public static void register(IEventBus eventBus) {
 	BLOCKS.register(eventBus);

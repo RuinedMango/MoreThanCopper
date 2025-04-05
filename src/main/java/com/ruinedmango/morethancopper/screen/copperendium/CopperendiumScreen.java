@@ -19,11 +19,11 @@ public class CopperendiumScreen extends AbstractContainerScreen<CopperendiumMenu
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
-	int x = (width - imageWidth) / 2;
-	int y = (height - imageHeight) / 2;
+	int x = leftPos;
+	int y = topPos;
 
-	guiGraphics.blit(RenderType::guiTextured, GUI_TEXTURE, x, y, 0.0f, 0.0f, (int) (imageWidth * 1.6),
-		(int) (imageHeight * 1.6), (int) (imageWidth * 1.6), (int) (imageHeight * 1.6));
+	guiGraphics.blit(RenderType::guiTextured, GUI_TEXTURE, x, y, 0.0f, 0.0f, imageWidth, imageHeight, imageWidth,
+		imageHeight);
     }
 
     @Override

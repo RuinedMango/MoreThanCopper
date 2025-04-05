@@ -1,8 +1,5 @@
 package com.ruinedmango.morethancopper.blocks;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
@@ -22,8 +19,6 @@ public class OxidizerCore extends Block implements WeatheringCopper {
 			    .forGetter(ChangeOverTimeBlock::getAge), propertiesCodec())
 		    .apply(instance, OxidizerCore::new));
     private final WeatheringCopper.WeatherState weatherState;
-
-    private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     public MapCodec<OxidizerCore> codec() {

@@ -25,6 +25,7 @@ public class CreativeModeTabRegistry {
 			output.accept(ItemRegistry.EXPOSED_OXIDIZER_CORE_ITEM.get());
 			output.accept(ItemRegistry.WEATHERED_OXIDIZER_CORE_ITEM.get());
 			output.accept(ItemRegistry.OXIDIZED_OXIDIZER_CORE_ITEM.get());
+			output.accept(ItemRegistry.FLUX_GENERATOR_ITEM.get());
 		    }).build());
 
     public static void register(IEventBus eventBus) {
