@@ -15,6 +15,7 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -43,6 +44,48 @@ public class FluxGeneratorEntity extends BlockEntity implements MenuProvider {
     private final Lazy<IEnergyStorage> energyHandler = Lazy.of(() -> new OxidizedFluxStorage(100000, 1000));
 
     public int burnTime;
+    public int burnTimeTotal;
+
+    private final ContainerData data = new ContainerData() {
+	@Override
+	public int get(int index) {
+	    switch (index) {
+	    case 0:
+		return burnTime;
+	    case 1:
+		return burnTimeTotal;
+	    case 2:
+		return energy.getEnergyStored();
+	    default:
+		return 0;
+	    }
+	}
+
+	@Override
+	public void set(int index, int value) {
+	    switch (index) {
+	    case 0:
+		burnTime = value;
+		break;
+	    case 1:
+		burnTimeTotal = value;
+		break;
+	    case 2:
+		energy.receiveEnergy(value, false);
+		break;
+	    }
+	}
+
+	@Override
+	public int getCount() {
+	    return 3;
+	}
+    };
+
+    // Provide a getter for the container data.
+    public ContainerData getContainerData() {
+	return data;
+    }
 
     public FluxGeneratorEntity(BlockPos pos, BlockState state) {
 	super(BlockEntityRegistry.FLUX_GENERATOR_ENTITY.get(), pos, state);
@@ -67,6 +110,7 @@ public class FluxGeneratorEntity extends BlockEntity implements MenuProvider {
 		    // Not a fuel
 		    return;
 		}
+		burnTimeTotal = burnTime;
 		items.extractItem(SLOT, 1, false);
 	    } else {
 		setBurnTime(burnTime - 1);

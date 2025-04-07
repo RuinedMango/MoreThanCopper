@@ -1,32 +1,57 @@
 package com.ruinedmango.morethancopper.screen.fluxgenerator;
 
+import java.util.logging.Logger;
+
+import com.ruinedmango.morethancopper.MoreThanCopper;
 import com.ruinedmango.morethancopper.blocks.fluxfurnace.FluxGeneratorEntity;
 import com.ruinedmango.morethancopper.registries.MenuRegistry;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
 public class FluxGeneratorMenu extends AbstractContainerMenu {
     public final FluxGeneratorEntity blockEntity;
+    public final ContainerData data;
 
     public FluxGeneratorMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-	this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
+	this(containerId, inv, (FluxGeneratorEntity) inv.player.level().getBlockEntity(extraData.readBlockPos()));
     }
 
-    public FluxGeneratorMenu(int containerId, Inventory inv, BlockEntity entity) {
+    public FluxGeneratorMenu(int containerId, Inventory inv, FluxGeneratorEntity entity) {
 	super(MenuRegistry.FLUX_GENERATOR_MENU.get(), containerId);
 
-	this.blockEntity = ((FluxGeneratorEntity) entity);
+	this.blockEntity = entity;
+	this.data = entity.getContainerData();
 
+	addDataSlots(data);
 	this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), 0, 30, 30));
 	addPlayerInventory(inv);
 	addPlayerHotbar(inv);
+    }
+
+    public FluxGeneratorEntity getBlockEntity() {
+	return blockEntity;
+    }
+
+    public float getLitProgress() {
+	int i = this.data.get(1);
+	if (i == 0) {
+	    i = 200;
+	}
+
+	return Mth.clamp((float) this.data.get(0) / i, 0.0f, 1.0f);
+    }
+
+    public float getEnergyProgress() {
+	Logger.getLogger(MoreThanCopper.MODID).info(FluxGeneratorEntity.CAPACITY + "/" + this.data.get(2));
+	return Mth.clamp((float) this.data.get(2) / FluxGeneratorEntity.CAPACITY, 0.0f, 1.0f);
     }
 
     private static final int HOTBAR_SLOT_COUNT = 9;

@@ -57,6 +57,7 @@ public class FluxGenerator extends Block implements WeatheringCopper, EntityBloc
 	    if (be instanceof FluxGeneratorEntity fluxGeneratorEntity) {
 		((ServerPlayer) player).openMenu(new SimpleMenuProvider(fluxGeneratorEntity,
 			Component.translatable("block.morethancopper.flux_generator")), pos);
+	    } else {
 		throw new IllegalStateException("Our named container provider is missing!");
 	    }
 	}

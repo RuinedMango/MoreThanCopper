@@ -28,10 +28,16 @@ public class FluxGeneratorScreen extends AbstractContainerScreen<FluxGeneratorMe
 	guiGraphics.blit(RenderType::guiTextured, GUI_TEXTURE, x, y, 0.0f, 0.0f, imageWidth, imageHeight, imageWidth,
 		imageHeight);
 
-	if (this.menu.blockEntity.burnTime >= 0) {
+	if (this.menu.data.get(0) > 0) {
 	    int k = 14;
-	    int l = Mth.ceil(this.menu.blockEntity.burnTime * 13.0F) + 1;
+	    int l = Mth.ceil(this.menu.getLitProgress() * 13.0F) + 1;
 	    guiGraphics.blitSprite(RenderType::guiTextured, LIT_PROGRESS_SPRITE, 14, 14, 0, 14 - l, x + 56,
+		    y + 36 + 14 - l, 14, l);
+	}
+	if (this.menu.data.get(2) > 0) {
+	    int k = 14;
+	    int l = Mth.ceil(this.menu.getEnergyProgress() * 13.0F) + 1;
+	    guiGraphics.blitSprite(RenderType::guiTextured, LIT_PROGRESS_SPRITE, 14, 14, 0, 14 - l, x + 40,
 		    y + 36 + 14 - l, 14, l);
 	}
     }
