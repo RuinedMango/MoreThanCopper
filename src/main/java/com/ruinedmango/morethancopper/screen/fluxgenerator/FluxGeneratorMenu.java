@@ -1,8 +1,5 @@
 package com.ruinedmango.morethancopper.screen.fluxgenerator;
 
-import java.util.logging.Logger;
-
-import com.ruinedmango.morethancopper.MoreThanCopper;
 import com.ruinedmango.morethancopper.blocks.fluxfurnace.FluxGeneratorEntity;
 import com.ruinedmango.morethancopper.registries.MenuRegistry;
 
@@ -50,7 +47,6 @@ public class FluxGeneratorMenu extends AbstractContainerMenu {
     }
 
     public float getEnergyProgress() {
-	Logger.getLogger(MoreThanCopper.MODID).info(FluxGeneratorEntity.CAPACITY + "/" + this.data.get(2));
 	return Mth.clamp((float) this.data.get(2) / FluxGeneratorEntity.CAPACITY, 0.0f, 1.0f);
     }
 

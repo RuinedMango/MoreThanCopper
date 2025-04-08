@@ -30,7 +30,7 @@ public class FluxGeneratorEntity extends BlockEntity implements MenuProvider {
     public static final String ITEMS_TAG = "Inventory";
     public static final String ENERGY_TAG = "Energy";
 
-    public static final int GENERATE = 50;
+    public static final int GENERATE = 10;
     public static final int MAXTRANSFER = 1000;
     public static final int CAPACITY = 100000;
 
@@ -41,10 +41,11 @@ public class FluxGeneratorEntity extends BlockEntity implements MenuProvider {
     private final Lazy<IItemHandler> itemHandler = Lazy.of(() -> items);
 
     private final OxidizedFluxStorage energy = createEnergyStorage();
-    private final Lazy<IEnergyStorage> energyHandler = Lazy.of(() -> new OxidizedFluxStorage(100000, 1000));
+    private final Lazy<IEnergyStorage> energyHandler = Lazy.of(() -> new OxidizedFluxStorage(CAPACITY, MAXTRANSFER));
 
     public int burnTime;
     public int burnTimeTotal;
+    public int energys;
 
     private final ContainerData data = new ContainerData() {
 	@Override
@@ -55,7 +56,7 @@ public class FluxGeneratorEntity extends BlockEntity implements MenuProvider {
 	    case 1:
 		return burnTimeTotal;
 	    case 2:
-		return energy.getEnergyStored();
+		return energys;
 	    default:
 		return 0;
 	    }
@@ -71,7 +72,7 @@ public class FluxGeneratorEntity extends BlockEntity implements MenuProvider {
 		burnTimeTotal = value;
 		break;
 	    case 2:
-		energy.receiveEnergy(value, false);
+		energys = value;
 		break;
 	    }
 	}
@@ -98,6 +99,7 @@ public class FluxGeneratorEntity extends BlockEntity implements MenuProvider {
 
     // Check if we have a burnable item in the inventory and if so generate energy
     private void generateEnergy() {
+	energys = energy.getEnergyStored();
 	if (energy.getEnergyStored() < energy.getMaxEnergyStored()) {
 	    if (burnTime <= 0) {
 		ItemStack fuel = items.getStackInSlot(SLOT);
