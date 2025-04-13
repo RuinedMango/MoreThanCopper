@@ -26,6 +26,13 @@ public class CreativeModeTabRegistry {
 			output.accept(ItemRegistry.WEATHERED_OXIDIZER_CORE_ITEM.get());
 			output.accept(ItemRegistry.OXIDIZED_OXIDIZER_CORE_ITEM.get());
 			output.accept(ItemRegistry.FLUX_GENERATOR_ITEM.get());
+			output.accept(ItemRegistry.EXPOSED_FLUX_GENERATOR_ITEM.get());
+			output.accept(ItemRegistry.WEATHERED_FLUX_GENERATOR_ITEM.get());
+			output.accept(ItemRegistry.OXIDIZED_FLUX_GENERATOR_ITEM.get());
+			output.accept(ItemRegistry.FLUX_CHARGER_ITEM.get());
+			output.accept(ItemRegistry.EXPOSED_FLUX_CHARGER_ITEM.get());
+			output.accept(ItemRegistry.WEATHERED_FLUX_CHARGER_ITEM.get());
+			output.accept(ItemRegistry.OXIDIZED_FLUX_CHARGER_ITEM.get());
 		    }).build());
 
     public static void register(IEventBus eventBus) {

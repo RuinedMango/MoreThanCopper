@@ -9,6 +9,24 @@
 		},
 		"morethancopper:weathered_oxidizer_core": {
 			"next_oxidation_stage": "morethancopper:oxidized_oxidizer_core"
+		},
+		"morethancopper:flux_generator": {
+			"next_oxidation_stage": "morethancopper:exposed_flux_generator"
+		},
+		"morethancopper:exposed_flux_generator": {
+			"next_oxidation_stage": "morethancopper:weathered_flux_generator"
+		},
+		"morethancopper:weathered_flux_generator": {
+			"next_oxidation_stage": "morethancopper:oxidized_flux_generator"
+		},
+		"morethancopper:flux_charger": {
+			"next_oxidation_stage": "morethancopper:exposed_flux_charger"
+		},
+		"morethancopper:exposed_flux_charger": {
+			"next_oxidation_stage": "morethancopper:weathered_flux_charger"
+		},
+		"morethancopper:weathered_flux_charger": {
+			"next_oxidation_stage": "morethancopper:oxidized_flux_charger"
 		}
 	}
 }

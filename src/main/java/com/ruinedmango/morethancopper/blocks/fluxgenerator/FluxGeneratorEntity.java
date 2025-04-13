@@ -1,9 +1,10 @@
-package com.ruinedmango.morethancopper.blocks.fluxfurnace;
+package com.ruinedmango.morethancopper.blocks.fluxgenerator;
 
 import javax.annotation.Nonnull;
 
 import com.ruinedmango.morethancopper.energy.OxidizedFluxStorage;
 import com.ruinedmango.morethancopper.registries.BlockEntityRegistry;
+import com.ruinedmango.morethancopper.registries.BlockRegistry;
 import com.ruinedmango.morethancopper.screen.fluxgenerator.FluxGeneratorMenu;
 
 import net.minecraft.core.BlockPos;
@@ -19,6 +20,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.common.util.Lazy;
@@ -89,7 +91,22 @@ public class FluxGeneratorEntity extends BlockEntity implements MenuProvider {
     }
 
     public FluxGeneratorEntity(BlockPos pos, BlockState state) {
-	super(BlockEntityRegistry.FLUX_GENERATOR_ENTITY.get(), pos, state);
+	super(determineEntityType(state), pos, state);
+    }
+
+    private static BlockEntityType<? extends FluxGeneratorEntity> determineEntityType(BlockState state) {
+	if (state.getBlock() == BlockRegistry.FLUX_GENERATOR.get()) {
+	    return BlockEntityRegistry.FLUX_GENERATOR_ENTITY.get();
+	} else if (state.getBlock() == BlockRegistry.EXPOSED_FLUX_GENERATOR.get()) {
+	    return BlockEntityRegistry.EXPOSED_FLUX_GENERATOR_ENTITY.get();
+	} else if (state.getBlock() == BlockRegistry.WEATHERED_FLUX_GENERATOR.get()) {
+	    return BlockEntityRegistry.WEATHERED_FLUX_GENERATOR_ENTITY.get();
+	} else if (state.getBlock() == BlockRegistry.OXIDIZED_FLUX_GENERATOR.get()) {
+	    return BlockEntityRegistry.OXIDIZED_FLUX_GENERATOR_ENTITY.get();
+	} else {
+	    // Fallback if none match. Adjust as needed.
+	    return BlockEntityRegistry.FLUX_GENERATOR_ENTITY.get();
+	}
     }
 
     public void tickServer() {
@@ -136,8 +153,6 @@ public class FluxGeneratorEntity extends BlockEntity implements MenuProvider {
     }
 
     private void distributeEnergy() {
-	// Check all sides of the block and send energy if that block supports the
-	// energy capability
 	for (Direction direction : Direction.values()) {
 	    if (energy.getEnergyStored() <= 0) {
 		return;

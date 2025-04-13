@@ -15,6 +15,9 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ItemRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MoreThanCopper.MODID);
 
+    public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS
+	    .registerSimpleBlockItem(BlockRegistry.EXAMPLE_BLOCK.getDelegate());
+
     public static final DeferredItem<Item> COPPERENDIUM = ITEMS.register("copperendium",
 	    () -> new Copperendium(new Item.Properties().rarity(Rarity.RARE).setId(ResourceKey
 		    .create(ITEMS.getRegistryKey(), ResourceLocation.parse(MoreThanCopper.MODID + ":copperendium")))));
@@ -30,6 +33,21 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> FLUX_GENERATOR_ITEM = ITEMS.registerSimpleBlockItem("flux_generator",
 	    BlockRegistry.FLUX_GENERATOR);
+    public static final DeferredItem<BlockItem> EXPOSED_FLUX_GENERATOR_ITEM = ITEMS
+	    .registerSimpleBlockItem("exposed_flux_generator", BlockRegistry.EXPOSED_FLUX_GENERATOR);
+    public static final DeferredItem<BlockItem> WEATHERED_FLUX_GENERATOR_ITEM = ITEMS
+	    .registerSimpleBlockItem("weathered_flux_generator", BlockRegistry.WEATHERED_FLUX_GENERATOR);
+    public static final DeferredItem<BlockItem> OXIDIZED_FLUX_GENERATOR_ITEM = ITEMS
+	    .registerSimpleBlockItem("oxidized_flux_generator", BlockRegistry.OXIDIZED_FLUX_GENERATOR);
+
+    public static final DeferredItem<BlockItem> FLUX_CHARGER_ITEM = ITEMS.registerSimpleBlockItem("flux_charger",
+	    BlockRegistry.FLUX_CHARGER);
+    public static final DeferredItem<BlockItem> EXPOSED_FLUX_CHARGER_ITEM = ITEMS
+	    .registerSimpleBlockItem("exposed_flux_charger", BlockRegistry.EXPOSED_FLUX_CHARGER);
+    public static final DeferredItem<BlockItem> WEATHERED_FLUX_CHARGER_ITEM = ITEMS
+	    .registerSimpleBlockItem("weathered_flux_charger", BlockRegistry.WEATHERED_FLUX_CHARGER);
+    public static final DeferredItem<BlockItem> OXIDIZED_FLUX_CHARGER_ITEM = ITEMS
+	    .registerSimpleBlockItem("oxidized_flux_charger", BlockRegistry.OXIDIZED_FLUX_CHARGER);
 
     public static void register(IEventBus eventBus) {
 	ITEMS.register(eventBus);

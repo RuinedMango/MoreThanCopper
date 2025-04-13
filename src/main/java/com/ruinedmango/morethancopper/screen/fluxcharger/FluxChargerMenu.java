@@ -1,6 +1,6 @@
-package com.ruinedmango.morethancopper.screen.fluxgenerator;
+package com.ruinedmango.morethancopper.screen.fluxcharger;
 
-import com.ruinedmango.morethancopper.blocks.fluxgenerator.FluxGeneratorEntity;
+import com.ruinedmango.morethancopper.blocks.fluxcharger.FluxChargerEntity;
 import com.ruinedmango.morethancopper.registries.MenuRegistry;
 
 import net.minecraft.network.FriendlyByteBuf;
@@ -13,16 +13,16 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
-public class FluxGeneratorMenu extends AbstractContainerMenu {
-    public final FluxGeneratorEntity blockEntity;
+public class FluxChargerMenu extends AbstractContainerMenu {
+    public final FluxChargerEntity blockEntity;
     public final ContainerData data;
 
-    public FluxGeneratorMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-	this(containerId, inv, (FluxGeneratorEntity) inv.player.level().getBlockEntity(extraData.readBlockPos()));
+    public FluxChargerMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
+	this(containerId, inv, (FluxChargerEntity) inv.player.level().getBlockEntity(extraData.readBlockPos()));
     }
 
-    public FluxGeneratorMenu(int containerId, Inventory inv, FluxGeneratorEntity entity) {
-	super(MenuRegistry.FLUX_GENERATOR_MENU.get(), containerId);
+    public FluxChargerMenu(int containerId, Inventory inv, FluxChargerEntity entity) {
+	super(MenuRegistry.FLUX_CHARGER_MENU.get(), containerId);
 
 	this.blockEntity = entity;
 	this.data = entity.getContainerData();
@@ -33,21 +33,12 @@ public class FluxGeneratorMenu extends AbstractContainerMenu {
 	addPlayerHotbar(inv);
     }
 
-    public FluxGeneratorEntity getBlockEntity() {
+    public FluxChargerEntity getBlockEntity() {
 	return blockEntity;
     }
 
-    public float getLitProgress() {
-	int i = this.data.get(1);
-	if (i == 0) {
-	    i = 200;
-	}
-
-	return Mth.clamp((float) this.data.get(0) / i, 0.0f, 1.0f);
-    }
-
     public float getEnergyProgress() {
-	return Mth.clamp((float) this.data.get(2) / FluxGeneratorEntity.CAPACITY, 0.0f, 1.0f);
+	return Mth.clamp((float) this.data.get(0) / FluxChargerEntity.CAPACITY, 0.0f, 1.0f);
     }
 
     private static final int HOTBAR_SLOT_COUNT = 9;
@@ -114,5 +105,4 @@ public class FluxGeneratorMenu extends AbstractContainerMenu {
 	    this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
 	}
     }
-
 }

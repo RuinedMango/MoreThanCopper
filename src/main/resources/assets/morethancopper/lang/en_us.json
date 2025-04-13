@@ -1,12 +1,19 @@
 {
   "itemGroup.morethancopper": "More Than Copper",
   
-  "block.morethancopper.example_block": "Example Block",
+  "block.morethancopper.example_block": "big juicy oiled up femboy ass cheaks",
   "block.morethancopper.oxidizer_core": "Oxidizer Core",
   "block.morethancopper.exposed_oxidizer_core": "Exposed Oxidizer Core",
   "block.morethancopper.weathered_oxidizer_core": "Weathered Oxidizer Core",
   "block.morethancopper.oxidized_oxidizer_core": "Oxidized Oxidizer Core",
   "block.morethancopper.flux_generator": "Flux Generator",
+  "block.morethancopper.exposed_flux_generator": "Exposed Flux Generator",
+  "block.morethancopper.weathered_flux_generator": "Weathered Flux Generator",
+  "block.morethancopper.oxidized_flux_generator": "Oxidized Flux Generator",
+  "block.morethancopper.flux_charger": "Flux Charger",
+  "block.morethancopper.exposed_flux_charger": "Exposed Flux Charger",
+  "block.morethancopper.weathered_flux_charger": "Weathered Flux Charger",
+  "block.morethancopper.oxidized_flux_charger": "Oxidized Flux Charger",
   
   "item.morethancopper.copperendium": "The Copperendium",
   "copperendium.description": "The heavy copper book."
