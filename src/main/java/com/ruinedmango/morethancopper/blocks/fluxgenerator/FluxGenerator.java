@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
 
@@ -116,8 +117,14 @@ public class FluxGenerator extends Block implements WeatheringCopper, EntityBloc
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
 	return this.defaultBlockState()
-		.setValue(BlockStateProperties.FACING, context.getNearestLookingDirection().getOpposite())
-		.setValue(BlockStateProperties.POWERED, false);
+		.setValue(BlockStateProperties.FACING, context.getHorizontalDirection().getOpposite())
+		.setValue(BlockStateProperties.LIT, false);
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+	super.createBlockStateDefinition(builder);
+	builder.add(BlockStateProperties.LIT, BlockStateProperties.FACING);
     }
 
 }

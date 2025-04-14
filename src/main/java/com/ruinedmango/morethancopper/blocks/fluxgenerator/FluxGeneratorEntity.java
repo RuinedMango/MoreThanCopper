@@ -22,6 +22,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.common.util.Lazy;
 import net.neoforged.neoforge.energy.IEnergyStorage;
@@ -144,11 +145,11 @@ public class FluxGeneratorEntity extends BlockEntity implements MenuProvider {
 	    return;
 	}
 	burnTime = bt;
-	/*
-	 * if (getBlockState().getValue(BlockStateProperties.POWERED) != burnTime > 0) {
-	 * level.setBlockAndUpdate(getBlockPos(),
-	 * getBlockState().setValue(BlockStateProperties.POWERED, burnTime > 0)); }
-	 */
+
+	if (getBlockState().getValue(BlockStateProperties.LIT) != burnTime > 0) {
+	    level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.LIT, burnTime > 0));
+	}
+
 	setChanged();
     }
 

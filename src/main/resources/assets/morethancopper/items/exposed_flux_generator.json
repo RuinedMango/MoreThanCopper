@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "morethancopper:block/flux_generator"
+  }
+}
