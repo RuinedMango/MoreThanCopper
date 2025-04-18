@@ -29,6 +29,10 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    maven {
+    	name 'Jared maven'
+    	url 'https://maven.blamejared.com/'
+	}
 }
 
 base {
@@ -123,6 +127,12 @@ configurations {
 
 dependencies {
 	implementation "curse.maven:jade-324717:${jade_id}"
+	jarJar(implementation('malte0811:DualCodecs')) {
+    version {
+        strictly '[0.1.1,1)'
+        prefer '0.1.1'
+    }
+}
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"

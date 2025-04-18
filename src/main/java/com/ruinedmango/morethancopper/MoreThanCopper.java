@@ -7,6 +7,7 @@ import com.ruinedmango.morethancopper.registries.BlockEntityRegistry;
 import com.ruinedmango.morethancopper.registries.BlockRegistry;
 import com.ruinedmango.morethancopper.registries.CapabilityRegistry;
 import com.ruinedmango.morethancopper.registries.CreativeModeTabRegistry;
+import com.ruinedmango.morethancopper.registries.DataComponentRegistry;
 import com.ruinedmango.morethancopper.registries.ItemRegistry;
 import com.ruinedmango.morethancopper.registries.MenuRegistry;
 import com.ruinedmango.morethancopper.registries.MenuScreenRegistry;
@@ -33,6 +34,7 @@ public class MoreThanCopper {
     public MoreThanCopper(IEventBus modEventBus, ModContainer modContainer) {
 	modEventBus.addListener(this::commonSetup);
 
+	DataComponentRegistry.register(modEventBus);
 	BlockRegistry.register(modEventBus);
 	ItemRegistry.register(modEventBus);
 	CreativeModeTabRegistry.register(modEventBus);

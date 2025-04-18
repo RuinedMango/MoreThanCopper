@@ -16,9 +16,11 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.common.util.Lazy;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -38,8 +40,7 @@ public class FluxChargerEntity extends BlockEntity implements MenuProvider {
     private final Lazy<IItemHandler> itemHandler = Lazy.of(() -> items);
 
     private final OxidizedFluxStorage energy = createEnergyStorage();
-    private final Lazy<OxidizedFluxStorage> energyHandler = Lazy
-	    .of(() -> new OxidizedFluxStorage(CAPACITY, MAXTRANSFER));
+    private final Lazy<OxidizedFluxStorage> energyHandler = Lazy.of(() -> energy);
 
     public int energys;
 
@@ -95,7 +96,15 @@ public class FluxChargerEntity extends BlockEntity implements MenuProvider {
     }
 
     public void tickServer() {
-	energys = energyHandler.get().getEnergyStored();
+	energys = energy.getEnergyStored();
+	ItemStack item = items.getStackInSlot(SLOT);
+	if (energy.getEnergyStored() > 0) {
+	    if (item.getCapability(Capabilities.EnergyStorage.ITEM) != null
+		    && item.getCapability(Capabilities.EnergyStorage.ITEM).canReceive()) {
+		energy.extractEnergy(
+			item.getCapability(Capabilities.EnergyStorage.ITEM).receiveEnergy(MAXTRANSFER, false), false);
+	    }
+	}
 	setChanged();
 	/*
 	 * generateEnergy(); distributeEnergy();
@@ -106,7 +115,7 @@ public class FluxChargerEntity extends BlockEntity implements MenuProvider {
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
 	super.saveAdditional(tag, provider);
 	tag.put(ITEMS_TAG, items.serializeNBT(provider));
-	tag.put(ENERGY_TAG, energyHandler.get().serializeNBT(provider));
+	tag.put(ENERGY_TAG, energy.serializeNBT(provider));
     }
 
     @Override
@@ -116,7 +125,7 @@ public class FluxChargerEntity extends BlockEntity implements MenuProvider {
 	    items.deserializeNBT(provider, tag.getCompoundOrEmpty(ITEMS_TAG));
 	}
 	if (tag.contains(ENERGY_TAG)) {
-	    energyHandler.get().deserializeNBT(provider, tag.get(ENERGY_TAG));
+	    energy.deserializeNBT(provider, tag.get(ENERGY_TAG));
 	}
     }
 

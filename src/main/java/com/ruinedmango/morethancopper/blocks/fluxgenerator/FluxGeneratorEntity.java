@@ -44,7 +44,7 @@ public class FluxGeneratorEntity extends BlockEntity implements MenuProvider {
     private final Lazy<IItemHandler> itemHandler = Lazy.of(() -> items);
 
     private final OxidizedFluxStorage energy = createEnergyStorage();
-    private final Lazy<IEnergyStorage> energyHandler = Lazy.of(() -> new OxidizedFluxStorage(CAPACITY, MAXTRANSFER));
+    private final Lazy<IEnergyStorage> energyHandler = Lazy.of(() -> energy);
 
     public int burnTime;
     public int burnTimeTotal;

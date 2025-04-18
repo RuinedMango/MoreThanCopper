@@ -2,6 +2,7 @@ package com.ruinedmango.morethancopper.registries;
 
 import com.ruinedmango.morethancopper.MoreThanCopper;
 import com.ruinedmango.morethancopper.items.Copperendium;
+import com.ruinedmango.morethancopper.items.FluxBattery;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -21,6 +22,11 @@ public class ItemRegistry {
     public static final DeferredItem<Item> COPPERENDIUM = ITEMS.register("copperendium",
 	    () -> new Copperendium(new Item.Properties().rarity(Rarity.RARE).setId(ResourceKey
 		    .create(ITEMS.getRegistryKey(), ResourceLocation.parse(MoreThanCopper.MODID + ":copperendium")))));
+    public static final DeferredItem<Item> FLUX_BATTERY = ITEMS
+	    .register("flux_battery",
+		    () -> new FluxBattery(new Item.Properties().stacksTo(1).component(DataComponentRegistry.OF, 0)
+			    .setId(ResourceKey.create(ITEMS.getRegistryKey(),
+				    ResourceLocation.parse(MoreThanCopper.MODID + ":flux_battery")))));
 
     public static final DeferredItem<BlockItem> OXIDIZER_CORE_ITEM = ITEMS.registerSimpleBlockItem("oxidizer_core",
 	    BlockRegistry.OXIDIZER_CORE);

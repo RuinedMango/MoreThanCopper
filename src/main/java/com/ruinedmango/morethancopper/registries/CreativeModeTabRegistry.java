@@ -21,6 +21,7 @@ public class CreativeModeTabRegistry {
 		    .icon(() -> ItemRegistry.COPPERENDIUM.get().getDefaultInstance())
 		    .displayItems((parameters, output) -> {
 			output.accept(ItemRegistry.COPPERENDIUM.get());
+			output.accept(ItemRegistry.FLUX_BATTERY.get());
 			output.accept(ItemRegistry.OXIDIZER_CORE_ITEM.get());
 			output.accept(ItemRegistry.EXPOSED_OXIDIZER_CORE_ITEM.get());
 			output.accept(ItemRegistry.WEATHERED_OXIDIZER_CORE_ITEM.get());
